@@ -1,4 +1,4 @@
-namespace GolfPlatform.Models;
+namespace GolfPlatform.Domain.Models;
 
 public class ErrorViewModel
 {

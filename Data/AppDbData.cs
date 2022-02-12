@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using GolfPlatform.Models;
+using GolfPlatform.Domain.Models;
 
 namespace GolfPlatform.Data;
 
-public class UserContext : DbContext
+public class AppDbContext : DbContext
 {
-    public UserContext(DbContextOptions<UserContext> options)
+    public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
     }
