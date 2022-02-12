@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using GolfPlatform.Models;
+using GolfPlatform.Domain.Models;
 
 namespace GolfPlatform.Controllers;
 
