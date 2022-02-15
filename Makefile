@@ -4,10 +4,6 @@ ENV=prod
 
 .DEFAULT_GOAL := all
 
-WEBAPP_MONGO_URI=mongodb://localhost:27017
-WEBAPP_MONGO_DB=webapp
-WEBAPP_HTTP_PORT=3000
-
 .PHONY: install
 install:
 	$(DOTNET) restore
@@ -49,3 +45,16 @@ run:
 .PHONY: run-services
 run-services:
 	docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=DBPassword' -p 1433:1433 mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+
+### Utilities
+.PHONY: version
+version:
+	git tag $(V)
+	./scripts/changelog.sh
+	$(NPM) version $(V) --no-git-tag-version
+	git add package.json
+	git add package-lock.json
+	git add ./docs/changelogs/CHANGELOG_$(V).md
+	git commit --allow-empty -m "Build $(V)"
+	git tag --delete $(V)
+	git tag $(V)	

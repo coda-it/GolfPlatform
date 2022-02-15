@@ -1,4 +1,0 @@
-package main
-
-// VERSION - current version
-var VERSION = %VERSION%
