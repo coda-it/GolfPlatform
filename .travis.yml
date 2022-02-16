@@ -1,0 +1,17 @@
+language: csharp
+mono: none
+dotnet: 6.0.101
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install libgconf-2-4 # required by Cypress
+  - . $HOME/.nvm/nvm.sh
+  - nvm install
+  - make install
+
+before_script:
+  - make lint
+  - make test
+
+script:
+  - make all ENV=prod
