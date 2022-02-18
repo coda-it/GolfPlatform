@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using GolfPlatform.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "public")),
+    RequestPath = "/public",
+    EnableDirectoryBrowsing = true
+});
+
 
 app.UseRouting();
 
