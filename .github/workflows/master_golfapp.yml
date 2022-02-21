@@ -26,7 +26,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Build front-end
-        rum: make build-frontend
+        run: make build-frontend
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
