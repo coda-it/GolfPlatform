@@ -33,7 +33,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '2.7.12'
+          python-version: '2.7'
 
       - name: Install npm dependencies
         run: npm install
