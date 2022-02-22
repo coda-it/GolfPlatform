@@ -22,14 +22,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseFileServer(new FileServerOptions
-{
-    FileProvider = new PhysicalFileProvider(
-           Path.Combine(builder.Environment.ContentRootPath, "public")),
-    RequestPath = "/public",
-    EnableDirectoryBrowsing = true
-});
-
+app.UseStaticFiles();
 
 app.UseRouting();
 
