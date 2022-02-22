@@ -11,7 +11,7 @@ module.exports = {
   },
   context: `${__dirname}/client`,
   output: {
-    path: `${__dirname}/public/default`,
+    path: `${__dirname}/wwwroot/default`,
     filename: '[name].js',
   },
   entry: {
