@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using GolfPlatform.Data;
+using GolfPlatform.Data.Repositories;
+using GolfPlatform.Domain.Usecases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext"))
 );
+
+builder.Host.ConfigureServices(services =>
+{
+    services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<IUserUsecases, UserUsecases>();
+});
 
 var app = builder.Build();
 

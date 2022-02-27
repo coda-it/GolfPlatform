@@ -1,17 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using GolfPlatform.Data;
-using GolfPlatform.Data.Repositories;
-using GolfPlatform.Domain.Models;
 using GolfPlatform.Domain.Usecases;
 
 namespace GolfPlatform.Controllers;
 public class LoginController : Controller
 {
     private IUserUsecases _userUsecases;
-    public LoginController(AppDbContext context)
+    public LoginController(IUserUsecases userUsecases)
     {
-        var userRepository = new UserRepository(context);
-        _userUsecases = new UserUsecases(userRepository);
+        _userUsecases = userUsecases;
     }
     public IActionResult Index()
     {
