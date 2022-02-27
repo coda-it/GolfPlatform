@@ -4,14 +4,14 @@ namespace GolfPlatform.Data.Repositories;
 
 public class UserRepository: IUserRepository
 {
-    AppDbContext AppDbContext;
+    AppDbContext _appDbContext;
     public UserRepository(AppDbContext AppDbContext)
     {
-        this.AppDbContext = AppDbContext;
+        _appDbContext = AppDbContext;
     }
 
     public UserModel Find(String email, String password)
     {
-        return this.AppDbContext.UserModel.Where(u => u.Name == email && u.Password == password).First<UserModel>();
+        return _appDbContext.UserModel.Where(u => u.Name == email && u.Password == password).First<UserModel>();
     }
 }

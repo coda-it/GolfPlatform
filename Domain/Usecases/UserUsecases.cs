@@ -5,14 +5,14 @@ namespace GolfPlatform.Domain.Usecases;
 
 public class UserUsecases : IUserUsecases
 {
-    IUserRepository userRepository;
+    IUserRepository _userRepository;
     public UserUsecases(IUserRepository userRepository)
     {
-        this.userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
     public UserModel LogIn(String email, String password)
     {
-        return this.userRepository.Find(email, password);
+        return _userRepository.Find(email, password);
     }
 }
