@@ -3,12 +3,6 @@ using GolfPlatform.Domain.Usecases;
 
 namespace GolfPlatform.Controllers;
 
-public struct ViewUser
-{
-    public string Username { get; set; }
-    public string Password { get; set; }
-}
-
 public class LoginController : Controller
 {
     private IUserUsecases _userUsecases;
