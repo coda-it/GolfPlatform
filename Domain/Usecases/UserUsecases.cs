@@ -15,4 +15,9 @@ public class UserUsecases : IUserUsecases
     {
         return _userRepository.Find(email, password);
     }
+
+    public void Add(String email, String password)
+    {
+        _userRepository.Add(email, password);
+    }
 }
