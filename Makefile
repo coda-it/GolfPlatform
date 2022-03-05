@@ -44,7 +44,7 @@ run:
 
 .PHONY: run-services
 run-services:
-	docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=DBPassword' -p 1433:1433 mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+	docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=DBPassword@2' -p 1433:1433 mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
 
 ### Utilities
 .PHONY: version
