@@ -1,5 +1,5 @@
 function* root() {
-  yield []
+  yield [];
 }
 
 export default root;

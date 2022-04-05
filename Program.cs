@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext"))
+    options.UseSqlServer(System.Environment.GetEnvironmentVariable("APPDB_CONTEXT") ?? builder.Configuration.GetConnectionString("AppDbContext"))
 );
 
 builder.Host.ConfigureServices(services =>
