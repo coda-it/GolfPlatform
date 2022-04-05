@@ -1,6 +1,6 @@
-$gc-icon-font-url: '~graphen/src/assets/font';
-$gc-font-url: '~graphen/src/assets/font';
+$gc-icon-font-url: "~graphen/src/assets/font";
+$gc-font-url: "~graphen/src/assets/font";
 
-@import '~graphen/src/style.scss';
+@import "~graphen/src/style.scss";
 
-@import './modules/LoginBox/styles';
+@import "./modules/LoginBox/styles";
