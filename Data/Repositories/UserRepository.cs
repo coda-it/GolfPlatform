@@ -10,9 +10,9 @@ public class UserRepository : IUserRepository
         _appDbContext = AppDbContext;
     }
 
-    public UserModel Find(String email, String password)
+    public UserModel? Find(String email, String password)
     {
-        return _appDbContext.UserModel.Single(u => u.Email == email && u.Password == password);
+        return _appDbContext.UserModel.SingleOrDefault(u => u.Email == email && u.Password == password);
     }
 
     public void Add(String email, String password)
