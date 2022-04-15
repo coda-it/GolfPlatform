@@ -11,7 +11,7 @@ public class UserUsecases : IUserUsecases
         _userRepository = userRepository;
     }
 
-    public UserModel LogIn(String email, String password)
+    public UserModel? LogIn(String email, String password)
     {
         return _userRepository.Find(email, password);
     }

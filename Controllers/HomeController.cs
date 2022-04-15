@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using GolfPlatform.Domain.Models;
 
@@ -13,6 +15,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public IActionResult Index()
     {
         return View();

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using GolfPlatform.Data;
 using GolfPlatform.Data.Repositories;
@@ -16,6 +17,8 @@ builder.Host.ConfigureServices(services =>
 {
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IUserUsecases, UserUsecases>();
+    services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options => options.LoginPath = "/login");
 });
 
 var app = builder.Build();
@@ -34,6 +37,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
