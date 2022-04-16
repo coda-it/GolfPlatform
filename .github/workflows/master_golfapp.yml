@@ -25,22 +25,6 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v2
-        with:
-          node-version: '12.13.1'
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '2.7'
-
-      - name: Install npm dependencies
-        run: npm install
-
-      - name: Build front-end
-        run: make build-frontend
-
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
@@ -69,5 +53,5 @@ jobs:
         with:
           app-name: 'golfapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1532CE167DEA46B69D0307C63DA94673 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_217B5DAFBBC9424985BC1F8DEFA93732 }}
           package: .
