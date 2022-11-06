@@ -45,5 +45,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "login",
     pattern: "{controller=Login}/{action=Index}");
+app.MapControllerRoute(
+name: "login",
+pattern: "{controller=Api}/api/{action=Index}");
 
 app.Run();

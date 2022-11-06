@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GolfPlatform.Domain.Models;
 
 namespace GolfPlatform.Data.Repositories;
@@ -8,6 +9,11 @@ public class UserRepository : IUserRepository
     public UserRepository(AppDbContext AppDbContext)
     {
         _appDbContext = AppDbContext;
+    }
+
+    public List<UserModel> Get() {
+        List<UserModel> users = _appDbContext.UserModel.ToList();
+        return users;
     }
 
     public UserModel? Find(String email, String password)

@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using GolfPlatform.Data.Repositories;
 using GolfPlatform.Domain.Models;
 
@@ -9,6 +11,10 @@ public class UserUsecases : IUserUsecases
     public UserUsecases(IUserRepository userRepository)
     {
         _userRepository = userRepository;
+    }
+
+    public List<UserModel> Get() {
+        return _userRepository.Get();
     }
 
     public UserModel? LogIn(String email, String password)
