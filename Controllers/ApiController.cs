@@ -1,9 +1,5 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using GolfPlatform.Domain.Usecases;
-using GolfPlatform.Domain.Models;
 
 namespace GolfPlatform.Controllers;
 
@@ -16,6 +12,12 @@ public class ApiController : Controller
     }
 
     public JsonResult Index()
+    {
+        var users = _userUsecases.Get();
+        return new JsonResult(new { Users = users });
+    }
+
+    public JsonResult Hit()
     {
         var users = _userUsecases.Get();
         return new JsonResult(new { Users = users });

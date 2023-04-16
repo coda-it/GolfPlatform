@@ -26,4 +26,8 @@ public class UserUsecases : IUserUsecases
     {
         _userRepository.Add(email, password);
     }
+
+    public void Hit(int id) {
+        _userRepository.Edit(id);
+    }
 }
