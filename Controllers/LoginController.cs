@@ -42,17 +42,10 @@ public class LoginController : Controller
                     IsPersistent = true
                 }
             );
-//System.Console.WriteLine("nnnnn " + HttpContext.Request.Cookies.Count());
-            // HttpContext.Request.Cookies.Append(
-            //     new KeyValuePair<string, string>("userId", user.Id.ToString())
-            // );
 
-            
-            //System.Console.WriteLine("mmmmm " + HttpContext.Request.Headers.Cookie.Count());
-            var options = new CookieOptions();
-            options.Expires = DateTime.Now.AddDays(1d);
-            Response.Cookies.Append("userId", user.Id.ToString(), options);
-
+            var cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddDays(1d);
+            Response.Cookies.Append("userId", user.Id.ToString(), cookieOptions);
 
             return RedirectToAction("Index", "Home");
         }

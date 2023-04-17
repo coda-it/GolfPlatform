@@ -13,7 +13,8 @@ public class UserUsecases : IUserUsecases
         _userRepository = userRepository;
     }
 
-    public List<UserModel> Get() {
+    public List<UserModel> Get()
+    {
         return _userRepository.Get();
     }
 
@@ -27,7 +28,8 @@ public class UserUsecases : IUserUsecases
         _userRepository.Add(email, password);
     }
 
-    public void Hit(int id) {
+    public void Hit(int id)
+    {
         _userRepository.Edit(id);
     }
 }

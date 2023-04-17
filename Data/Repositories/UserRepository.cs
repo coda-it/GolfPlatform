@@ -11,7 +11,8 @@ public class UserRepository : IUserRepository
         _appDbContext = AppDbContext;
     }
 
-    public List<UserModel> Get() {
+    public List<UserModel> Get()
+    {
         List<UserModel> users = _appDbContext.UserModel.ToList();
         return users;
     }
@@ -36,7 +37,8 @@ public class UserRepository : IUserRepository
     {
         var user = _appDbContext.UserModel.SingleOrDefault(u => u.Id == id);
 
-        if (user != null ) {
+        if (user != null)
+        {
             user.Points += 1;
             _appDbContext.UserModel.Update(user);
             _appDbContext.SaveChanges();

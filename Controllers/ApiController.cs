@@ -19,6 +19,13 @@ public class ApiController : Controller
 
     public JsonResult Hit()
     {
+        var userId = Request.Cookies["userId"];
+
+        if (userId != null)
+        {
+            _userUsecases.Hit(Int32.Parse(userId));
+        }
+
         var users = _userUsecases.Get();
         return new JsonResult(new { Users = users });
     }
