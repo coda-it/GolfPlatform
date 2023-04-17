@@ -11,7 +11,8 @@ public class UserRepository : IUserRepository
         _appDbContext = AppDbContext;
     }
 
-    public List<UserModel> Get() {
+    public List<UserModel> Get()
+    {
         List<UserModel> users = _appDbContext.UserModel.ToList();
         return users;
     }
@@ -26,8 +27,21 @@ public class UserRepository : IUserRepository
         UserModel user = new UserModel();
         user.Email = email;
         user.Password = password;
+        user.Points = 0;
 
         _appDbContext.UserModel.Add(user);
         _appDbContext.SaveChanges();
+    }
+
+    public void Edit(int id)
+    {
+        var user = _appDbContext.UserModel.SingleOrDefault(u => u.Id == id);
+
+        if (user != null)
+        {
+            user.Points += 1;
+            _appDbContext.UserModel.Update(user);
+            _appDbContext.SaveChanges();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using GolfPlatform.Domain.Usecases;
@@ -41,6 +42,10 @@ public class LoginController : Controller
                     IsPersistent = true
                 }
             );
+
+            var cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddDays(1d);
+            Response.Cookies.Append("userId", user.Id.ToString(), cookieOptions);
 
             return RedirectToAction("Index", "Home");
         }
